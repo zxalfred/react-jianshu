@@ -32,6 +32,7 @@ export const NavItem = styled.div`
   padding: 0 15px;
   font-size: 17px;
   color: #333;
+  cursor: pointer;
   &.left {
     float: left;
   }
@@ -47,7 +48,7 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
-  .iconfont {
+  .zoom {
     position: absolute;
     right: 5px;
     bottom: 5px;
@@ -118,6 +119,14 @@ export const SearchInfoTitlt = styled.div`
 export const SearchInfoSwitch = styled.span`
   float: right;
   font-size: 13px;
+  cursor: pointer;
+  .spin {
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 2px;
+    transition: all .5s linear;
+    transform-origin: center center;
+  }
 `
 
 export const SearchInfoList = styled.div`
@@ -152,6 +161,7 @@ export const Button = styled.div`
   border-radius: 19px;
   border: 1px solid #ec6149;
   font-size: 14px;
+  cursor: pointer;
   &.writting {
     color: #fff;
     background: #ec6149;
