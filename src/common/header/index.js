@@ -10,8 +10,36 @@ import {
   Addition,
   Button,
   SearchWrapper,
+  SearchInfo,
+  SearchInfoTitlt,
+  SearchInfoSwitch,
+  SearchInfoItem,
+  SearchInfoList,
 } from './style';
-import * as actionCreator from '../../store/actionCreator';
+import { actionCreators } from './store';
+
+const getListArea = (show) => {
+  if(show) {
+    return (
+      <SearchInfo>
+        <SearchInfoTitlt>
+          热门搜索
+          <SearchInfoSwitch>换一批</SearchInfoSwitch>
+        </SearchInfoTitlt>
+        <SearchInfoList>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>教育</SearchInfoItem>
+        </SearchInfoList>
+      </SearchInfo>
+    );
+  } else {
+    return null;
+  }
+}
 
 const Header = (props) => {
   const { focused, handleInputFocus, handleInputBlur } = props;
@@ -43,6 +71,7 @@ const Header = (props) => {
               className={focused ? "focused" : ""}></NavSearch>
           </CSSTransition>
           <i className={focused ? "focused iconfont" : "iconfont"}>&#xe62d;</i>
+          {getListArea(focused)}
         </SearchWrapper>
       </Nav>
       <Addition>
@@ -58,17 +87,17 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.focused,
+    focused: state.getIn(['header', 'focused']),
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleInputFocus() {
-      dispatch(actionCreator.getSearchFocus());
+      dispatch(actionCreators.searchFocus());
     },
     handleInputBlur() {
-      dispatch(actionCreator.getSearchBlur());
+      dispatch(actionCreators.searchBlur());
     }
   }
 }

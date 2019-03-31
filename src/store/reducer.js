@@ -1,22 +1,8 @@
-import * as actionTypes from './actionTypes';
+import { combineReducers } from 'redux-immutable';
+import { reducer as headerReducer } from '../common/header/store';
 
-const defaultState = {
-  focused: false,
-}
+const reducer =  combineReducers({
+  header: headerReducer,
+});
 
-export default (state = defaultState, action) => {
-  const newState = JSON.parse(JSON.stringify(state));
-  switch(action.type) {
-    case actionTypes.SEARCH_FOCUS: {
-      newState.focused = true;
-      return newState;
-    }
-    case actionTypes.SEARCH_BLUR: {
-      newState.focused = false;
-      return newState;
-    }
-    default: {
-      return state;
-    }
-  }
-}
+export default reducer;
