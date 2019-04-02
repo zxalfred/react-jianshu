@@ -170,3 +170,32 @@ export const WrirterShowMore = styled.div`
   margin-top: 20px;
   cursor: pointer;
 `
+
+export const LoadMore = styled.div`
+  width: 100%;
+  line-height: 40px;
+  background: #a5a5a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: #fff;
+  margin: 30px 0;
+  cursor: pointer;
+`
+
+export const BackTop = styled.div`
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  .ic-backtop {
+    font-size: 20px;
+  }
+`

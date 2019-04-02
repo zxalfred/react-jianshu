@@ -4,17 +4,19 @@ import { actionCreators } from '../store';
 import {
   ListItem,
   ListInfo,
+  LoadMore,
 } from '../style';
 
 class List extends Component {
   render() {
-    const { list } = this.props;
+    const { list, getMoreList, page } = this.props;
     return (
       <div>
         {
-          list.map((item) => {
+          list.map((item, index) => {
             return (
-              <Fragment key={item.get('id')}>
+              // can't use index as key value in reality
+              <Fragment key={index}> 
                 <ListItem>
                   <ListInfo>
                     <h3 className="title">{item.get('title')}</h3>
@@ -30,6 +32,7 @@ class List extends Component {
             );
           })
         }
+        <LoadMore onClick={() => {getMoreList(page)}}>加载更多</LoadMore>
       </div>
     );
   }
@@ -42,12 +45,15 @@ class List extends Component {
 
 const mapState = (state) => ({
   list: state.getIn(['home', 'articleList']),
+  page: state.getIn(['home', 'articlePage']),
 });
 
-const mapDispatch = (dispacth) => ({
+const mapDispatch = (dispatch) => ({
   getArticleList() {
-    const action = actionCreators.getArticleList();
-    dispacth(action);
+    dispatch(actionCreators.getArticleList());
+  },
+  getMoreList(page) {
+    dispatch(actionCreators.getMoreList(page));
   }
 });
 
