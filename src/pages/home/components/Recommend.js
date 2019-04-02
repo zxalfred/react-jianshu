@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from '../store';
 import {
   RecommendWrapper,
   RecommendItem,
@@ -20,10 +21,22 @@ class Recommend extends Component {
       </RecommendWrapper>
     );
   }
+
+  componentDidMount() {
+    const { getRecommend } = this.props;
+    getRecommend();
+  }
 }
 
 const mapState = (state) => ({
   list: state.getIn(['home', 'recommendList']),
 });
 
-export default connect(mapState, null)(Recommend);
+const mapDispatch = (dispatch) => ({
+  getRecommend() {
+    const action = actionCreators.getRecommendList();
+    dispatch(action);
+  }
+});
+
+export default connect(mapState, mapDispatch)(Recommend);

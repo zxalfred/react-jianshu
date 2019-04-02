@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from '../store';
 import {
   ListItem,
   ListInfo,
@@ -32,10 +33,22 @@ class List extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    const { getArticleList } = this.props;
+    getArticleList();
+  }
 }
 
 const mapState = (state) => ({
   list: state.getIn(['home', 'articleList']),
 });
 
-export default connect(mapState, null)(List);
+const mapDispatch = (dispacth) => ({
+  getArticleList() {
+    const action = actionCreators.getArticleList();
+    dispacth(action);
+  }
+});
+
+export default connect(mapState, mapDispatch)(List);

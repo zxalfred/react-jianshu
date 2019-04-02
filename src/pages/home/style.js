@@ -98,6 +98,7 @@ export const RecommendItem = styled.div`
   margin-bottom: 6px;
   background: url(${(props) => props.imgUrl});
   background-size: contain;
+  cursor: pointer;
 `
 
 export const WriterWrapper = styled.div`

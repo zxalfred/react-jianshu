@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from '../store';
 import {
   TopicWrapper,
   TopicItem,
@@ -31,10 +32,22 @@ class Topic extends Component {
       </TopicWrapper>
     );
   }
+
+  componentDidMount() {
+    const { getTopics } = this.props;
+    getTopics();
+  }
 }
 
 const mapState = (state) => ({
   list: state.getIn(['home', 'topicList']),
 });
 
-export default connect(mapState, null)(Topic);
+const mapProps = (dispatch) => ({
+  getTopics() {
+    const action = actionCreators.getTopicList();
+    dispatch(action);
+  }
+});
+
+export default connect(mapState, mapProps)(Topic);
