@@ -102,8 +102,70 @@ export const RecommendItem = styled.div`
 
 export const WriterWrapper = styled.div`
   width: 278px;
+`
+
+export const WriterTitle = styled.div`
+  margin-top: 20px;
+  margin-bottom: 15px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #969696;
+`
+
+export const WriterItem = styled.div`
+  overflow: hidden;
+  margin-top: 15px;
+  line-height: 20px;
+`
+
+export const WriterAvatar = styled.a`
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+  cursor: pointer;
+  img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+`
+export const WriterInfo = styled.div`
+  margin-top: 6px;
+  display: inline-block;
+  .writer-name {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+  }
+  .writer-info {
+    font-size: 12px;
+    color: #969696;
+  }
+`
+
+export const WriterFollow = styled.div`
+  float: right;
+  color: #42c02e;
+  cursor: pointer;
+  font-size: 13px;
+`
+
+export const WrirterShowMore = styled.div`
+  width: 100%;
+  box-sizing: border-box;
   border: 1px solid #dcdcdc;
-  border-radius: 3px;
-  line-height: 300px;
-  text-align: center;
+  color: #787878;
+  background: #f7f7f7;
+  border-radius: 4px;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  margin-top: 20px;
+  cursor: pointer;
 `

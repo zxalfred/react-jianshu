@@ -1,0 +1,1 @@
+export const SET_RECOMMEND_WRITER = 'home/SET_RECOMMEND_WRITER';

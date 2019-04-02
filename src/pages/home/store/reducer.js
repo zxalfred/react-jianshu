@@ -1,6 +1,8 @@
+import * as actionTypes from './constants';
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
+  recommendWriterList: [],
   topicList: [
     {
       id: 1,
@@ -94,6 +96,9 @@ const defaultState = fromJS({
 
 export default (state = defaultState, action) => {
   switch(action.type) {
+    case actionTypes.SET_RECOMMEND_WRITER: {
+      return state.set('recommendWriterList', action.users);
+    }
     default: {
       return state;
     }
