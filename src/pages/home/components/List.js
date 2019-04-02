@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { actionCreators } from '../store';
 import {
   ListItem,
@@ -7,7 +8,7 @@ import {
   LoadMore,
 } from '../style';
 
-class List extends Component {
+class List extends PureComponent {
   render() {
     const { list, getMoreList, page } = this.props;
     return (
@@ -16,7 +17,7 @@ class List extends Component {
           list.map((item, index) => {
             return (
               // can't use index as key value in reality
-              <Fragment key={index}> 
+              <Link key={index} to="/detail">
                 <ListItem>
                   <ListInfo>
                     <h3 className="title">{item.get('title')}</h3>
@@ -28,7 +29,7 @@ class List extends Component {
                     alt="article-pic"
                   />
                 </ListItem>
-              </Fragment>
+              </Link>
             );
           })
         }

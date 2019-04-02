@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   HeaderWrapper,
   Logo,
@@ -18,7 +19,7 @@ import {
 } from './style';
 import { actionCreators } from './store';
 
-class Header extends Component {
+class Header extends PureComponent {
 
   getListArea = () => {
     const { focused, list, page, totalPage, handleMouseEnter, handleMouseLeave, mouseIn, handleChangePage } = this.props;
@@ -66,11 +67,15 @@ class Header extends Component {
     } = this.props;
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className="left active">
-            <i className="iconfont">&#xe786;</i>
-            首页
+            <Link to="/">
+              <i className="iconfont">&#xe786;</i>
+              首页
+            </Link>
           </NavItem>
           <NavItem className="left">
             <i className="iconfont">&#xe60f;</i>

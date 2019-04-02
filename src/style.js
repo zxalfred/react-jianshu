@@ -44,6 +44,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
 `
 
 export default GlobalStyle;
