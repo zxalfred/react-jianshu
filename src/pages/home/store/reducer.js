@@ -19,7 +19,6 @@ export default (state = defaultState, action) => {
       return state.set('articleList', action.data);
     }
     case actionTypes.ADD_MORE_ARTICLE_LIST: {
-      // return state.set('articleList', state.get('articleList').concat(action.data));
       return state.merge({
         articleList: state.get('articleList').concat(action.data),
         articlePage: action.nextPage,

@@ -18,6 +18,7 @@ import {
   SearchInfoList,
 } from './style';
 import { actionCreators } from './store';
+import { actionCreators as loginActionCreators } from '../../pages/login/store';
 
 class Header extends PureComponent {
 
@@ -64,6 +65,7 @@ class Header extends PureComponent {
       focused,
       handleInputFocus,
       handleInputBlur,
+      login,
     } = this.props;
     return (
       <HeaderWrapper>
@@ -81,7 +83,11 @@ class Header extends PureComponent {
             <i className="iconfont">&#xe60f;</i>
             下载App
           </NavItem>
-          <NavItem className="right">登录</NavItem>
+          {
+            login ?
+            <NavItem onClick="handleLogout" className="right">退出</NavItem> :
+            <Link to="/login"><NavItem className="right">登录</NavItem></Link>
+          }
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
@@ -119,6 +125,7 @@ const mapStateToProps = (state) => {
     page: state.getIn(['header', 'page']),
     mouseIn: state.getIn(['header', 'mouseIn']),
     totalPage: state.getIn(['header', 'totalPage']),
+    login: state.getIn(['login', 'login']),
   }
 }
 
@@ -152,7 +159,10 @@ const mapDispatchToProps = (dispatch) => {
         target = 1;
       }
       dispatch(actionCreators.changePage(target));
-    }
+    },
+    handleLogout() {
+      dispatch(loginActionCreators.logout());
+    },
   }
 }
 
