@@ -10,6 +10,9 @@ export default (state = defaultState, action) => {
     case actionTypes.CHANGE_LOGIN: {
       return state.set('login', action.value);
     }
+    case actionTypes.LOG_OUT: {
+      return state.set('login', action.value);
+    }
     default: {
       return state;
     }

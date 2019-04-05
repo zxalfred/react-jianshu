@@ -66,6 +66,7 @@ class Header extends PureComponent {
       handleInputFocus,
       handleInputBlur,
       login,
+      handleLogout,
     } = this.props;
     return (
       <HeaderWrapper>
@@ -85,7 +86,7 @@ class Header extends PureComponent {
           </NavItem>
           {
             login ?
-            <NavItem onClick="handleLogout" className="right">退出</NavItem> :
+            <NavItem onClick={handleLogout} className="right">退出</NavItem> :
             <Link to="/login"><NavItem className="right">登录</NavItem></Link>
           }
           <NavItem className="right">
